@@ -1,6 +1,8 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -32,6 +34,24 @@ app.use(bodyParser.json());
 
 // Method override Middleware
 app.use(methodOverride('_method'))
+
+// Express session Middleware
+app.use(session({
+    secret: '1qaz@WSX',
+    resave: true,
+    saveUninitialized: true
+  }));
+
+app.use(flash());
+
+// Global variables
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+
+    next();
+});
 
 // Index Route
 app.get('/', (req, res) => {
@@ -102,6 +122,7 @@ app.post('/device', (req, res) => {
         new Device(addDevice)
             .save()
             .then((device) => {
+                req.flash('success_msg', 'Device added.');
                 res.redirect('/device');
             });
     }
@@ -121,6 +142,7 @@ app.put('/device/:id', (req, res) => {
 
         device.save()
             .then(device => {
+                req.flash('success_msg', 'Device updated.');
                 res.redirect('/device');
             });
     });  
@@ -132,6 +154,7 @@ app.delete('/device/:id', (req, res) => {
         _id: req.params.id
     })
     .then(() => {
+        req.flash('success_msg', 'Device removed.');
         res.redirect('/device');
     });
 });
