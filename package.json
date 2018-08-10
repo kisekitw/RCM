@@ -1,0 +1,28 @@
+{
+  "name": "rcm",
+  "version": "1.0.0",
+  "description": "Remote Control Management",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kisekitw/RCM.git"
+  },
+  "keywords": [
+    "RCM",
+    "Nodejs",
+    "Express"
+  ],
+  "author": "Xavier Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kisekitw/RCM/issues"
+  },
+  "homepage": "https://github.com/kisekitw/RCM#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0"
+  }
+}
