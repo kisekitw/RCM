@@ -16,7 +16,8 @@ const DeviceSchema = new Schema({
         required: true
     },
     isDelete: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     createDate: {
         type: Date,
@@ -24,7 +25,8 @@ const DeviceSchema = new Schema({
     },
     createUser: {
         type: String,
-        required: true
+        required: true,
+        default: 'Admin'
     },
     updateDate: {
         type: Date,
@@ -32,7 +34,8 @@ const DeviceSchema = new Schema({
     },
     updateUser: {
         type: String,
-        required: true
+        required: true,
+        default: 'Admin'
     }
 });
 
