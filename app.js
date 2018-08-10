@@ -42,9 +42,32 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+// Device Index Page
+app.get('/device', (req, res) => {
+    Device.find({})
+        .sort({ updateDate: 'desc'})
+        .then(devices => {
+            res.render('device/index', {
+                devices: devices
+            });
+        });
+});
+
 // Add Device Form
 app.get('/device/add', (req, res) => {
     res.render('device/add');
+});
+
+// Edit Device Form
+app.get('/device/edit/:id', (req, res) => {
+    Device.findOne({
+        _id: req.params.id
+    })
+    .then(device => {
+        res.render('device/edit', {
+            device: device
+        });
+    })  
 });
 
 // Process Form
@@ -77,7 +100,6 @@ app.post('/device', (req, res) => {
             .then((device) => {
                 res.redirect('/device');
             });
-
     }
 });
 

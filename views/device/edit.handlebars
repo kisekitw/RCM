@@ -1,0 +1,30 @@
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}} {{/each}}
+
+<div class="card card-body">
+    <h3>Edit Device</h3>
+    <form action="/device" method="post">
+        <div class="form-group">
+            <label for="devName">Device Name</label>
+            <input type="text" class="form-control" id="devName" name="devName" value="{{device.devName}}" required>
+        </div>
+        <div class="form-group">
+            <label for="devIP">Device IP</label>
+            <input type="text" class="form-control" id="devIP" placeholder="ex:127.0.0.1" name="devIP" value="{{device.devIP}}" required>
+        </div>
+        <div class="form-group">
+            <label for="devPort">Device Port</label>
+            <input type="text" class="form-control" id="devPort" placeholder="ex:8088" name="devPort" value="{{device.devPort}}" required>
+        </div>
+        <div class="form-group">
+            <label for="createUser">Create User</label>
+            <input type="text" class="form-control" id="createUser" name="createUser" value="{{device.createUser}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="createDate">Create Date</label>
+            <input type="text" class="form-control" id="createDate" name="createDate" value="{{device.createDate}}" readonly>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
