@@ -123,7 +123,17 @@ app.put('/device/:id', (req, res) => {
             .then(device => {
                 res.redirect('/device');
             });
-    })  
+    });  
+});
+
+// Delete Device
+app.delete('/device/:id', (req, res) => {
+    Device.remove({
+        _id: req.params.id
+    })
+    .then(() => {
+        res.redirect('/device');
+    });
 });
 
 const port = 5000;

@@ -21,7 +21,7 @@ const DeviceSchema = new Schema({
     },
     createDate: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     createUser: {
         type: String,
@@ -30,7 +30,7 @@ const DeviceSchema = new Schema({
     },
     updateDate: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     updateUser: {
         type: String,
