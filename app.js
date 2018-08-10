@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -28,6 +29,9 @@ app.set('view engine', 'handlebars');
 // Body parser Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Method override Middleware
+app.use(methodOverride('_method'))
 
 // Index Route
 app.get('/', (req, res) => {
@@ -70,7 +74,7 @@ app.get('/device/edit/:id', (req, res) => {
     })  
 });
 
-// Process Form
+// Add Form Process
 app.post('/device', (req, res) => {
     let errors = [];
     if (!req.body.devName) {
@@ -101,6 +105,25 @@ app.post('/device', (req, res) => {
                 res.redirect('/device');
             });
     }
+});
+
+// Edit Form Process 
+app.put('/device/:id', (req, res) => {
+    Device.findOne({
+        _id: req.params.id
+    })
+    .then(device => {
+        device.devName = req.body.devName,
+        device.devIP = req.body.devIP,
+        device.devPort = req.body.devPort,
+        device.updateDate = Date.now(),
+        device.updateUser = 'Admin'
+
+        device.save()
+            .then(device => {
+                res.redirect('/device');
+            });
+    })  
 });
 
 const port = 5000;

@@ -4,7 +4,8 @@
 
 <div class="card card-body">
     <h3>Edit Device</h3>
-    <form action="/device" method="post">
+    <form action="/device/{{device.id}}?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
             <label for="devName">Device Name</label>
             <input type="text" class="form-control" id="devName" name="devName" value="{{device.devName}}" required>
