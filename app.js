@@ -12,7 +12,7 @@ app.set('view engine', 'handlebars');
 
 // Index Route
 app.get('/', (req, res) => {
-    const title = 'From Index Hello';
+    const title = 'Remote Control Management';
     res.render('index', {
         title: title
     });
