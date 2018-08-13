@@ -2,3 +2,22 @@
     width: 130px;
     margin: auto;
 }
+
+/* md */
+@media (min-width: 768px) {
+    .card-img-top {
+        width: 100%;
+        height: 30vw;
+        object-fit: cover;
+    }
+}
+
+/* lg */
+@media (min-width: 1200px) {
+    .card-img-top {
+        width: 100%;
+        height: 20vw;
+        object-fit: cover;
+    }
+}
+

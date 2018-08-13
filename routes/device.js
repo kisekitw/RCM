@@ -34,6 +34,18 @@ router.get('/edit/:id', (req, res) => {
     })  
 });
 
+// Remove Device Form
+router.get('/remove/:id', (req, res) => {
+    Device.findOne({
+        _id: req.params.id
+    })
+    .then(device => {
+        res.render('device/remove', {
+            device: device
+        });
+    })  
+});
+
 //Card show Form
 router.get('/card', (req, res) => {
     Device.find({})
@@ -44,6 +56,19 @@ router.get('/card', (req, res) => {
             });
         });
 });
+
+//ListCard show Form
+router.get('/listcard', (req, res) => {
+    Device.find({})
+        .sort({ updateDate: 'desc'})
+        .then(devices => {
+            res.render('device/listcard', {
+                devices: devices
+            });
+        });
+});
+
+
 
 // Add Form Process
 router.post('/', (req, res) => {

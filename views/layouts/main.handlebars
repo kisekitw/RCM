@@ -5,10 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/vendor/css/card.css">
+    <link rel="stylesheet" href="/vendor/css/listcard.css">
     <title>RCM</title>
 </head>
 
@@ -26,21 +31,21 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script src="/vendor/js/listcard.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 
     <script>
-        (function ($) {
-
-            'use strict';
-            $('.alert[data-auto-dismiss]').each(function (index, element) {
-                var $element = $(element),
-                    timeout = $element.data('auto-dismiss') || 5000;
-
-                setTimeout(function () {
-                    $element.alert('close');
-                }, timeout);
+        $(document).ready(function () {
+            $('.card-img-top').load(function () {
+                console.log($(this).attr('src'));
+               // TODO: check image src is valid or not
+               // $.get($(this).attr('src'), function (data, status) {
+               //     alert("Data: " + data + "\nStatus: " + status);
+               // });
             });
-
-        })(jQuery);
+        });
     </script>
 </body>
 

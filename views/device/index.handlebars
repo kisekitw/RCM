@@ -6,10 +6,11 @@
     <p>{{createUser}}-{{createDate}}</p>
     <p>{{updateUser}}-{{updateDate}}</p>
     <a href="/device/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a>
-    <form action="/device/{{id}}?_method=DELETE" method="POST">
+    {{!-- <form action="/device/{{id}}?_method=DELETE" method="POST">
         <input type='hidden' name="_method" value="DELETE">
         <input type="submit" class="btn btn-danger btn-block" value="Delete">
-    </form>
+    </form> --}}
+    <a href="/device/remove/{{id}}" class="btn btn-danger btn-block mb-2">Remove</a>
 </div>
 
 {{else}}

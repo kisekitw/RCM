@@ -1,0 +1,39 @@
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}} {{/each}}
+
+<div class="card card-body">
+    <h3>Delete Device</h3>
+     <form action="/device/{{device.id}}?_method=DELETE" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+            <label for="devName">Device Name</label>
+            <input type="text" class="form-control" id="devName" name="devName" value="{{device.devName}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="devIP">Device IP</label>
+            <input type="text" class="form-control" id="devIP" placeholder="ex:127.0.0.1" name="devIP" value="{{device.devIP}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="devPort">Device Port</label>
+            <input type="text" class="form-control" id="devPort" placeholder="ex:8088" name="devPort" value="{{device.devPort}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="createUser">Create User</label>
+            <input type="text" class="form-control" id="createUser" name="createUser" value="{{device.createUser}}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="createDate">Create Date</label>
+            <input type="text" class="form-control" id="createDate" name="createDate" value="{{device.createDate}}" readonly>
+        </div>
+        <input type="submit" class="btn btn-danger btn-block" value="Delete">
+    </form>
+</div>
+
+
+
+
+    {{!-- <form action="/device/{{id}}?_method=DELETE" method="POST">
+        <input type='hidden' name="_method" value="DELETE">
+        <input type="submit" class="btn btn-danger btn-block" value="Delete">
+    </form> --}}

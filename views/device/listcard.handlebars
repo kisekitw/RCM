@@ -1,0 +1,150 @@
+<div class="row">
+    <div id="user" class="col-md-12">
+        <div class="panel panel-primary panel-table">
+            <div class="panel-heading " style="padding:5px;">
+                <div class="row">
+                    <div class="col col-xs-3 text-left">
+                        <a href="#list" class="btn btn-default" aria-controls="list" role="tab" data-toggle="tab">
+                            <i class="fa fa-list" aria-hidden="true"></i></a>
+                        <a href="#thumb" class="btn btn-default" aria-controls="thumb" role="tab" data-toggle="tab">
+                            <i class="fa fa-th" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col col-xs-2 text-center" style="padding:1px;">
+                        {{!-- <span class="label label-danger"></span> --}}
+                        <button id="ok" class="btn btn-primary" data-class="btn btn-primary" onclick="filter('ok')">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </button>
+                        <button id="ban" class="btn btn-warning" data-class="btn btn-warning" onclick="filter('ban')">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                        </button>
+                        <button id="new" class="btn btn-success" data-class="btn btn-success" onclick="filter('new')">
+                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="col col-xs-2 text-right ">
+                        <a href="/device/add" class="btn  btn-success">
+                            <i class="fa fa-plus-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="list">
+                        <table class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                    <th class="avatar">ScreenShot</th>
+                                    <th>Device Name</th>
+                                    <th>IP</th>
+                                    <th>Port</th>
+                                    <th>
+                                        <em class="fa fa-cog"></em>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each devices}}
+                                <tr class="ok">
+                                    <td class="avatar">
+                                        <img src="http://fakeimg.pl/800x800/282828/EAE0D0/">
+                                    </td>
+                                    <td>{{devName}}</td>
+                                    <td>{{devIP}}</td>
+                                    <td>{{devPort}}</td>
+                                    <td align="center">
+                                        <a href="/device/edit/{{id}}" class="btn btn-primary" title="Edit">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-warning" title="ban">
+                                            <i class="fa fa-ban"></i>
+                                        </a>
+                                        <a href="/device/remove/{{id}}" class="btn btn-danger" title="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{else}}
+                                <h1>- No device listed -</h1>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END id="list" -->
+
+
+                    <div class="tab-pane" id="thumb">
+                        <div class="row">
+                            {{#each devices}}
+                            <div class="col-md-6 pr-1 pt-2">
+                                <div class="ok">
+                                    <div class="card">
+                                        <img class="card-img-top" src="http://{{devIP}}:{{devPort}}?action=stream" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{devName}}</h5>
+                                            <p class="card-text">{{devIP}}:{{devPort}}</p>
+                                            <a href="/device/edit/{{id}}" class="btn btn-primary" title="Edit">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-warning" title="ban">
+                                                <i class="fa fa-ban"></i>
+                                            </a>
+                                            <a href="/device/remove/{{id}}" class="btn btn-danger" title="delete">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{else}}
+                            <h1>- No device listed -</h1>
+                            {{/each}}
+                        </div>
+                        <!-- END id="thumb" -->
+
+                    </div>
+                    <!-- END tab-content -->
+                </div>
+
+                {{!--
+                <div class="panel-footer text-center">
+                    <ul class="pagination">
+                        <li>
+                            <a>«</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a>»</a>
+                        </li>
+                    </ul>
+                </div> --}}
+            </div>
+            <!--END panel-table-->
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function filter($state) {
+            var x = document.getElementsByClassName($state);
+            var btn = document.getElementById($state);
+
+            if (btn.className == "btn") {
+                btn.className = btn.dataset.class;
+                for (i = 0; i < x.length; i++) { x[i].className = " animated fadeInLeft " + $state; }
+            }
+            else {
+                for (i = 0; i < x.length; i++) { x[i].className = " animated fadeOutRight " + $state; }
+                btn.className = "btn";
+            }
+
+        }
+    </script>
