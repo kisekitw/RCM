@@ -34,6 +34,17 @@ router.get('/edit/:id', (req, res) => {
     })  
 });
 
+//Card show Form
+router.get('/card', (req, res) => {
+    Device.find({})
+        .sort({ updateDate: 'desc'})
+        .then(devices => {
+            res.render('device/card', {
+                devices: devices
+            });
+        });
+});
+
 // Add Form Process
 router.post('/', (req, res) => {
     let errors = [];
