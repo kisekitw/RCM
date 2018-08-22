@@ -17,7 +17,7 @@ const userRoutes = require('./routes/user');
 mongoose.Promise = global.Promise;
 
 // Connect to mongoose
-mongoose.connect('mongodb://localhost:27017/RCMDB', {
+mongoose.connect('mongodb://mongo:27017/RCMDB', {
     useNewUrlParser: true
 })
     .then(() => console.log('mongodb connected...'))
@@ -74,7 +74,7 @@ app.get('/about', (req, res) => {
 app.use('/device', deviceRoutes);
 app.use('/user', userRoutes);
 
-const port = 5000;
+const port = 3000;
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
