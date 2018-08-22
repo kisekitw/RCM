@@ -17,6 +17,7 @@ const userRoutes = require('./routes/user');
 mongoose.Promise = global.Promise;
 
 // Connect to mongoose
+// Chang localhost or 127.0.0.1 to mongo for docker-compose using!IMPORTANT!!
 mongoose.connect('mongodb://mongo:27017/RCMDB', {
     useNewUrlParser: true
 })
